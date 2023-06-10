@@ -31,6 +31,11 @@ public class Lab01
             zad4();
             Main();
         }
+        else if (zadanie == 5)
+        {
+            zad5();
+            Main();
+        }
         else if (zadanie == 6)
         {
             zad6();
@@ -62,7 +67,7 @@ public class Lab01
 
 
 
-    static private int zad1()
+    static private void zad1()
 
     {
         //int baseNum, int powNum,
@@ -76,12 +81,11 @@ public class Lab01
             result = result * baseNum;
         }
         Console.WriteLine("potega to  " + result);
-        return result;
 
     }
 
 
-    static private int zad2()
+    static private void zad2()
 
     {
         //int baseNum, int powNum,
@@ -99,11 +103,11 @@ public class Lab01
         }
         Console.WriteLine("wyraz ciagu to " + a);
 
-        return a;
+      
     }
 
 
-    static private int zad3()
+    static private void zad3()
 
     {
 
@@ -149,11 +153,11 @@ public class Lab01
         Console.WriteLine("m = " + m);
 
 
-        return m;
+       
     }
 
 
-    static private int zad4()
+    static private void zad4()
     // Wczytaj kwotę początkową którą wpłacisz na konto oszczędnościowe, oprocentowanie
     // konta w skali roku, oraz liczbę miesięcy oszczędzania.Zakładając, że nie dodajesz
     // nowych środków, oraz że odsetki są naliczane co miesiąc(z oprocentowaniem równym
@@ -177,14 +181,60 @@ public class Lab01
 
 
         Console.WriteLine("zarobisz na tym " + zyskiMinusPodatki);
-
-
-
-        return 0;
     }
 
 
-    static private int zad6()
+    static private void zad5()
+    {
+        Console.WriteLine("Podaj n i x:");
+        int n = int.Parse(Console.ReadLine());
+        int x = int.Parse(Console.ReadLine());
+
+        double edox = 1;
+        for (int i = 0; i <= n; i++)
+        {
+            double temp = edox;
+            edox = edox + (potęga(x, i) / silnia(i));
+        }
+
+        Console.WriteLine("e^x =:" + edox);
+
+    
+
+
+
+
+
+
+
+        int potęga(int a, int b)
+        {
+            int temp = a;
+            if (b == 0)
+            {
+                return 1;
+            }
+            for (int i = 1; i < b; i++)
+            {
+                a = a * temp;
+            }
+
+            return a;
+        }
+        int silnia(int a)
+        {
+            int wynik = 1;
+            for (int i = 1; i <= a; i++)
+            {
+                wynik = wynik * i;
+            }
+            return wynik;
+        }
+    }
+
+
+
+    static private void zad6()
     // Napisz algorytm, który sprawdzi, czy wprowadzona liczba x jest silnią liczby n i jeśli
     // tak, to niech wypisze n.
     {
@@ -205,7 +255,7 @@ public class Lab01
             }
         }
 
-        return 0;
+       
     }
 
     static private int zad7()
