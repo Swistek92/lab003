@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Tracing;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
@@ -49,6 +50,16 @@ public class Lab01
         else if (zadanie == 8)
         {
             zad8();
+            Main();
+        }
+        else if (zadanie == 9)
+        {
+            zad9();
+            Main();
+        }
+        else if (zadanie == 10)
+        {
+            zad10();
             Main();
         }
         else if (zadanie == 0)
@@ -258,7 +269,7 @@ public class Lab01
        
     }
 
-    static private int zad7()
+    static private void  zad7()
     //  Napisz algorytm, który wypisze wszystkie pary liczb naturalnych, których suma jest
     // równa wprowadzonej liczbie n.
     {
@@ -271,15 +282,10 @@ public class Lab01
             int y = n - i;
             Console.WriteLine(i.ToString() + "   " + y.ToString());
         }
-
-
-
-     
-
-        return 0;
-
     }
-    static private int zad8()
+
+
+    static private void zad8()
     //  Napisz algorytm do zgadywania jaką liczbę z przedziału 1-20 ma na myśli użytkownik.
     // Algorytm powinien proponować liczby, a użytkownik powinien odpowiadać:
     // i.liczbą ujemną, jeśli propozycja jest mniejsza od szukanej liczby,
@@ -355,25 +361,117 @@ public class Lab01
 
 
         }
+    }
 
+   static private void zad9()
+    {
+        Console.WriteLine("podaj cyfre a ja ją obrócę   ");
+        int n = Convert.ToInt32(Console.ReadLine());
+        // int[] result = n.ToString().Select(o => Convert.ToInt32(o) - 48).ToArray();
+        // string reversedWord = string.Join("", result.Reverse());
+        int sum=0;
 
+        string a = "asb";
 
+     
 
+        int reverse(int num)
+        {
+           
+            int r=0;
 
-
-
-
-
-        return 0;
+            if(num > 0)
+            {
+                r = num % 10;
+                sum =(sum * 10) + r;
+                reverse(num / 10);
+            }else
+            {
+                return 0;
+            }
+            return sum;
+        }
+            int revesed =  reverse(n);
+        Console.WriteLine(revesed);
+            
 
     }
 
-   
+    static private void zad10()
+    {
+    
+        string ToUpperCase(string word)
+        {
 
+            int a;
+
+
+
+
+            string[] ch = new string[word.Length];
+
+            for (int i = 0; i < word.Length; i++)
+            {
+                ch[i] = word[i].ToString();
+            }
+
+            ch[0] = ch[0].ToUpper();
+
+            for (int i =1; i< ch.Length; i++)
+            {
+                ch[i]= ch[i].ToLower(); 
+            
+            }
+
+            return string.Join("", ch);    
+        }
+
+        string capitalised =  ToUpperCase("asdasd");
+
+        Console.WriteLine(capitalised);
+
+    }
 
 
     // .NET can only read single characters or entire lines from the
     // console. The following function safely reads a double value.
+
+    
+
+static private void zad11() {
+
+        Console.WriteLine("podaj cyfre a ja ją obrócę   ");
+        int n = Convert.ToInt32(Console.ReadLine());
+        int[] result = n.ToString().Select(o => Convert.ToInt32(o) - 48).ToArray();
+
+        while (result.Length + 1 < 3)
+        {
+
+            Console.WriteLine("podaj minimum 3 cyfrowa liczbe! ");
+            n = Convert.ToInt32(Console.ReadLine());
+            result = n.ToString().Select(o => Convert.ToInt32(o) - 48).ToArray();
+        }
+
+
+
+        int a;
+        int b;
+        void spellNumber(int n)
+        {
+            if (n > 0)
+            {
+                a = n % 10;
+                Console.WriteLine(a);
+                n = n - a;
+                spellNumber(n);
+            }
+
+        }
+
+        spellNumber(n);
+    }
+    
+
     private static double inputValue()
     {
         double result;
@@ -381,4 +479,6 @@ public class Lab01
         return result;
     }
 }
+
+
 
